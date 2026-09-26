@@ -168,7 +168,7 @@ body {
     min-height: 550px;
     padding: 0 !important;
     overflow: hidden;
-    background: #000;
+    background: #ffffff; /* 모바일에서 여백이나 빈 공간이 생길 경우를 대비해 깔끔한 배경색 지정 */
 }
 
 .slider-container {
@@ -187,6 +187,9 @@ body {
     height: 100%;
     opacity: 0;
     transition: opacity 1.2s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .slide.active {
@@ -196,7 +199,8 @@ body {
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* PC 화면에서는 꽉 채우기 유지 */
+    object-position: center center;
     transform: scale(1);
     animation: kenBurnsImg 6s infinite alternate linear;
 }
@@ -280,6 +284,7 @@ body {
     color: var(--text-main);
     border-color: #ffffff;
 }
+
 
 /* ==========================================
    6. Programs & Workshops Section
@@ -578,6 +583,20 @@ body {
     .nav-links.active { display: flex; }
     .menu-toggle { display: block; }
     
+    /* --- 모바일 히로 슬라이더 이미지 잘림 방지 설정 --- */
+    .hero-slider {
+        height: auto;
+        min-height: auto;
+        aspect-ratio: 4 / 3; /* 스마트폰 화면에서 적절한 비율 확보 (또는 원본 비율에 맞게 조절 가능) */
+    }
+
+    .slide img {
+        object-fit: contain; /* 모바일에서 좌우/상하 잘림 없이 전체 이미지 표시 */
+        background-color: var(--bg-color); /* 여백 발생 시 이질감 없도록 배경 색상 맞춤 */
+        animation: none; /* 모바일 성능 및 시각적 안정성을 위해 애니메이션 해제 (필요시 유지 가능) */
+    }
+    /* ------------------------------------------- */
+
     .hero-bottom-overlay {
         padding: 2rem 1.5rem;
     }
