@@ -34,6 +34,26 @@ body {
 }
 
 /* ==========================================
+   Header & Logo Styling
+   ========================================== */
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* 로고 이미지와 텍스트 사이 간격 */
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+.logo-img {
+    height: 38px; /* 헤더에 알맞은 로고 높이 (필요시 조절 가능) */
+    width: auto;
+    object-fit: contain;
+}
+
+/* ==========================================
    3. Header & Navigation (Glassmorphism)
    ========================================== */
 .header {
