@@ -48,9 +48,17 @@ body {
 }
 
 .logo-img {
-    height: 38px; /* 헤더에 알맞은 로고 높이 (필요시 조절 가능) */
+    height: 38px; /* 데스크톱 화면에서의 로고 높이 */
     width: auto;
     object-fit: contain;
+    max-width: 100%;
+}
+
+/* 모바일 환경에서 로고 크기 조정 */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 30px; /* 모바일 화면에서의 로고 높이 (원하시는 크기로 조절 가능) */
+    }
 }
 
 /* ==========================================
