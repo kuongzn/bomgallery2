@@ -1,0 +1,565 @@
+/* ==========================================
+   1. Design Tokens & Variables
+   ========================================== */
+:root {
+    --bg-color: #faf9f6;
+    --text-main: #2b2b2b;
+    --text-muted: #666666;
+    --accent-color: #d97757;
+    --card-bg: #ffffff;
+    --border-color: #e5e2dc;
+    --font-primary: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================
+   2. Global Reset & Base
+   ========================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   3. Header & Navigation (Glassmorphism)
+   ========================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(250, 249, 246, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo a {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent-color);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-main);
+}
+
+/* ==========================================
+   4. Main Container & Section Layouts
+   ========================================== */
+.main-container {
+    padding-top: 70px;
+}
+
+.section-block {
+    padding: 5rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-title {
+    margin-bottom: 1.5rem;
+}
+
+.section-title h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text-main);
+}
+
+.section-title span {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: 0.25rem;
+}
+
+.section-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin-bottom: 3rem;
+}
+
+/* ==========================================
+   5. Hero Section & Ken Burns Slider (6 Artworks)
+   ========================================== */
+.hero-slider {
+    position: relative;
+    height: calc(100vh - 70px);
+    min-height: 550px;
+    padding: 0 !important;
+    overflow: hidden;
+    background: #000;
+}
+
+.slider-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    animation: kenBurnsImg 6s infinite alternate linear;
+}
+
+@keyframes kenBurnsImg {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.06); }
+}
+
+.hero-bottom-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    padding: 3rem 3rem 2.5rem;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.caption-wrapper {
+    color: #ffffff;
+}
+
+.caption-info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.caption-artist {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.caption-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.hero-cta-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.hero-quick-btn {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    background: #ffffff;
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.88rem;
+    border: 1px solid #ffffff;
+    transition: all 0.2s ease;
+}
+
+.hero-quick-btn:hover {
+    background: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+}
+
+.hero-quick-btn.outline {
+    background: rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.hero-quick-btn.outline:hover {
+    background: #ffffff;
+    color: var(--text-main);
+    border-color: #ffffff;
+}
+
+/* ==========================================
+   6. Programs & Workshops Section
+   ========================================== */
+.workshop-banner {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.workshop-content h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0.8rem 0 1rem;
+    letter-spacing: -0.02em;
+}
+
+.workshop-content p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    background: var(--accent-color);
+    color: #ffffff;
+    border-radius: 4px;
+}
+
+.register-action-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: var(--text-main);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    transition: var(--transition-smooth);
+}
+
+.register-action-btn:hover {
+    background: var(--accent-color);
+}
+
+.workshop-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.feature-item {
+    background: var(--bg-color);
+    padding: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: var(--transition-smooth);
+}
+
+.feature-item:hover {
+    border-color: var(--accent-color);
+}
+
+.feature-item h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.feature-item p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.feature-link-item {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* ==========================================
+   7. Exhibitions Carousel Section
+   ========================================== */
+.exhibition-container-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.exhibition-carousel-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.exhibition-carousel-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.exhibition-track {
+    display: flex;
+    gap: 2rem;
+}
+
+.exhibition-card {
+    flex: 0 0 420px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.exhibition-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.exhibition-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.exhibition-info {
+    padding: 1.8rem;
+}
+
+.exhibition-info span {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.exhibition-info h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0.5rem 0 0.8rem;
+    letter-spacing: -0.01em;
+}
+
+.exhibition-info p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.carousel-btn:hover {
+    background: var(--text-main);
+    color: #ffffff;
+    border-color: var(--text-main);
+}
+
+.prev-btn { left: -25px; }
+.next-btn { right: -25px; }
+
+/* ==========================================
+   8. About Us & Exhibit With Us Sections
+   ========================================== */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 3rem;
+}
+
+.about-text h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.about-text p {
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+}
+
+.about-content img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* ==========================================
+   9. Archives Section
+   ========================================== */
+.archive-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.archive-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: var(--card-bg);
+    padding: 1.5rem 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: var(--transition-smooth);
+}
+
+.archive-item:hover {
+    border-color: var(--accent-color);
+    padding-left: 2.3rem;
+}
+
+.year-badge {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    background: rgba(217, 119, 87, 0.1);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+}
+
+.archive-detail h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.archive-detail p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   10. Responsive Media Queries
+   ========================================== */
+@media (max-width: 1024px) {
+    .header { padding: 0 1.5rem; }
+    .section-block { padding: 4rem 1.5rem; }
+    .workshop-banner, .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+    }
+    .about-content img { height: 260px; }
+    .exhibition-card { flex: 0 0 340px; }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-color);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+        text-align: center;
+    }
+    .nav-links.active { display: flex; }
+    .menu-toggle { display: block; }
+    
+    .hero-bottom-overlay {
+        padding: 2rem 1.5rem;
+    }
+    .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+    }
+    .hero-quick-btn {
+        text-align: center;
+        width: 100%;
+    }
+    .carousel-btn { display: none; }
+}
