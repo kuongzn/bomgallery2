@@ -4,9 +4,49 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery Content Manager</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    .test-token-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #2b2b2b;
+      color: #ffffff;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      z-index: 99999;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .test-token-banner input {
+      padding: 6px 10px;
+      width: 320px;
+      background: #1a1a1a;
+      border: 1px solid #444;
+      color: #fff;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 12px;
+    }
+    .test-token-banner span {
+      opacity: 0.8;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- 테스트용 토큰 복사 바 (정식 오픈 시 이 div 영역만 삭제하시면 됩니다) -->
+  <div class="test-token-banner">
+    <span>🛠️ [테스트용] 깃허브 토큰:</span>
+    <input type="text" value="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" readonly onclick="this.select(); document.execCommand('copy'); alert('토큰이 복사되었습니다!');">
+    <span style="font-size: 11px; color: #d97757;">(클릭하면 자동 복사됩니다)</span>
+  </div>
+
+  <!-- Decap CMS 메인 스크립트 -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>

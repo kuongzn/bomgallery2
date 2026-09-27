@@ -84,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const exhibitions = data.items || [];
                 if (exhibitions.length === 0) return;
 
-                // 기존 하드코딩된 카드 초기화 후 JSON 데이터로 동적 생성
                 exhibitionTrack.innerHTML = '';
 
                 exhibitions.forEach(item => {

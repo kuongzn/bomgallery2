@@ -2,14 +2,15 @@ backend:
   name: github
   repo: kuongzn/bomgallery2
   branch: main
-  api_root: https://api.github.com
-  site_id: kuongzn.github.io
-
+  auth_type: token
+#  auth_type: implicit  # 💡 팝업창을 통해 직접 깃허브 인증을 받는 방식
+#  client_id: "Ov23liSBWHmDQmfnY408"
+# token : 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
 media_folder: "img"
 public_folder: "/img"
 
 collections:
-  # 1. 메인 히어로 슬라이더 (파일: content/hero-slides.json)
+  # 1. 메인 히어로 슬라이더 관리
   - name: "hero_slider"
     label: "메인 히어로 슬라이더"
     files:
@@ -29,7 +30,7 @@ collections:
                 media_folder: "img/artworks"
                 public_folder: "/img/artworks"
 
-  # 2. 전시회 섹션 관리 (파일: content/exhibitions.json) 💡 JSON 파일 하나로 통일
+  # 2. 전시회 섹션 관리
   - name: "exhibitions"
     label: "전시회 관리"
     files:
