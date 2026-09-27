@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================
-       2. Hero 6 Artworks Slider (Ken Burns) - CMS 연동
+       2. Hero Artworks Slider (CMS 연동: hero-slides.json)
        ========================================== */
     const sliderContainer = document.querySelector('.slider-container');
     
@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (sliderContainer) {
-        // CMS에서 관리하는 hero-slides.json 데이터를 비동기로 불러옴
         fetch('./content/hero-slides.json')
             .then(response => response.json())
             .then(data => {
@@ -74,7 +73,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================
-       3. Exhibition Carousel Scroll Buttons
+       3. Exhibitions Carousel (CMS 연동: exhibitions.json)
+       ========================================== */
+    const exhibitionTrack = document.querySelector('.exhibition-track');
+
+    if (exhibitionTrack) {
+        fetch('./content/exhibitions.json')
+            .then(response => response.json())
+            .then(data => {
+                const exhibitions = data.items || [];
+                if (exhibitions.length === 0) return;
+
+                // 기존 하드코딩된 카드 초기화 후 JSON 데이터로 동적 생성
+                exhibitionTrack.innerHTML = '';
+
+                exhibitions.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'exhibition-card';
+
+                    card.innerHTML = `
+                        <img src="${item.image}" alt="${item.title}">
+                        <div class="exhibition-info">
+                            <span>${item.badge}</span>
+                            <h3>${item.title}</h3>
+                            <p>${item.description}</p>
+                        </div>
+                    `;
+                    exhibitionTrack.appendChild(card);
+                });
+            })
+            .catch(error => console.error('Exhibitions load error:', error));
+    }
+
+    /* ==========================================
+       4. Exhibition Carousel Scroll Buttons
        ========================================== */
     const carouselWrapper = document.querySelector('.exhibition-carousel-wrapper');
     const prevBtn = document.querySelector('.prev-btn');

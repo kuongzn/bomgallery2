@@ -1,0 +1,34 @@
+{
+  "slides": [
+    {
+      "img": "img/artworks/art-01.jpg",
+      "artist": "Noriko Yamamoto",
+      "title": "Featured Artwork 01"
+    },
+    {
+      "img": "img/artworks/art-02.jpg",
+      "artist": "Bomi Ko",
+      "title": "Featured Artwork 02"
+    },
+    {
+      "img": "img/artworks/art-03.jpg",
+      "artist": "Dasha Silkova",
+      "title": "Featured Artwork 03"
+    },
+    {
+      "img": "img/artworks/art-04.jpg",
+      "artist": "Gaesook Yang",
+      "title": "Featured Artwork 04"
+    },
+    {
+      "img": "img/artworks/art-05.jpg",
+      "artist": "Irene YK Cha",
+      "title": "Featured Artwork 05"
+    },
+    {
+      "img": "img/artworks/art-06.jpg",
+      "artist": "William Lottering",
+      "title": "Featured Artwork 06"
+    }
+  ]
+}

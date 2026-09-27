@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "badge": "2026 Season",
+      "title": "Together Voice of Diversity Show",
+      "description": "A contemporary art exchange exhibition featuring diverse perspectives and cultural expressions.",
+      "image": "img/exhibitions/exhib-01.jpg"
+    },
+    {
+      "badge": "Special Exhibition",
+      "title": "Dialogue in Time",
+      "description": "An introspective collection bridging historical depth with modern creative interpretations.",
+      "image": "img/exhibitions/exhib-02.jpg"
+    }
+  ]
+}
