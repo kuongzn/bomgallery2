@@ -1,6 +1,8 @@
 backend:
   name: git-gateway
+  repo: kuongzn/bomgallery2
   branch: main
+  identity_url: https://bomgallery2.netlify.app/.netlify/identity
 
 media_folder: "img"
 public_folder: "/img"
