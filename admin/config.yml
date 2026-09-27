@@ -1,0 +1,48 @@
+backend:
+  name: github
+  repo: kuongzn/bomgallery2
+  branch: main
+
+media_folder: "img"
+public_folder: "/img"
+
+collections:
+  # 1. 히어로 슬라이더 6개 작품 관리 (경로: img/artworks)
+  - name: "hero_slider"
+    label: "메인 히어로 슬라이더"
+    files:
+      - file: "content/hero-slides.json"
+        label: "히어로 슬라이더 편집"
+        name: "hero_slides"
+        fields:
+          - label: "작품 목록 (6개 슬라이드)"
+            name: "slides"
+            widget: "list"
+            fields:
+              - label: "작가명 (Artist)"
+                name: "artist"
+                widget: "string"
+              - label: "작품명 / 타이틀 (Title)"
+                name: "title"
+                widget: "string"
+              - label: "작품 이미지"
+                name: "img"
+                widget: "image"
+                media_folder: "img/artworks"
+                public_folder: "/img/artworks"
+
+  # 2. 전시회 섹션 카드 관리 (경로: img/exhibitions)
+  - name: "exhibitions"
+    label: "전시회 관리"
+    folder: "content/exhibitions"
+    create: true
+    fields:
+      - {label: "전시회 순서/ID", name: "id", widget: "string"}
+      - {label: "시즌/태그 (예: 2026 Season)", name: "badge", widget: "string"}
+      - {label: "전시 제목", name: "title", widget: "string"}
+      - {label: "전시 소개 내용", name: "description", widget: "text"}
+      - label: "전시 포스터 이미지"
+        name: "image"
+        widget: "image"
+        media_folder: "img/exhibitions"
+        public_folder: "/img/exhibitions"
