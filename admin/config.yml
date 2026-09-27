@@ -2,13 +2,13 @@ backend:
   name: github
   repo: kuongzn/bomgallery2
   branch: main
-  site_id: "lighthearted-melomakarona-8a2b93"
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
 
 media_folder: "img"
 public_folder: "/img"
 
 collections:
-  # 1. 메인 히어로 슬라이더 관리
   - name: "hero_slider"
     label: "메인 히어로 슬라이더"
     files:
@@ -28,7 +28,6 @@ collections:
                 media_folder: "img/artworks"
                 public_folder: "/img/artworks"
 
-  # 2. 전시회 섹션 관리
   - name: "exhibitions"
     label: "전시회 관리"
     files:
