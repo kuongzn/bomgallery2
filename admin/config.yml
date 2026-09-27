@@ -2,6 +2,7 @@ backend:
   name: github
   repo: kuongzn/bomgallery2
   branch: main
+  auth_type: pkce   # 💡 깃허브 페이지스 환경에서 서버 없이 인증하기 위한 설정
 
 media_folder: "img"
 public_folder: "/img"
