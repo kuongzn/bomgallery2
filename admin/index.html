@@ -1,52 +1,44 @@
 <!doctype html>
-<html>
+<html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery Content Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Bom Gallery CMS</title>
   <style>
-    .test-token-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #2b2b2b;
-      color: #ffffff;
-      padding: 12px 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      font-size: 13px;
-      z-index: 99999;
-      box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    /* 모바일과 PC 환경에서 CMS UI가 화면에 꽉 차도록 설정 */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #f3f4f6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
-    .test-token-banner input {
-      padding: 6px 10px;
-      width: 320px;
-      background: #1a1a1a;
-      border: 1px solid #444;
-      color: #fff;
-      border-radius: 4px;
-      font-family: monospace;
-      font-size: 12px;
-    }
-    .test-token-banner span {
-      opacity: 0.8;
+    #nc-root {
+      min-height: 100vh;
     }
   </style>
 </head>
 <body>
+  <!-- Decap CMS 루트 영역 -->
+  <div id="nc-root"></div>
 
-  <!-- 테스트용 토큰 복사 바 (정식 오픈 시 이 div 영역만 삭제하시면 됩니다) -->
-  <div class="test-token-banner">
-    <span>🛠️ [테스트용] 깃허브 토큰:</span>
-    <input type="text" value="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" readonly onclick="this.select(); document.execCommand('copy'); alert('토큰이 복사되었습니다!');">
-    <span style="font-size: 11px; color: #d97757;">(클릭하면 자동 복사됩니다)</span>
-  </div>
-
-  <!-- Decap CMS 메인 스크립트 -->
+  <!-- Netlify Identity 위젯 스크립트 (Netlify 로그인을 원활하게 돕는 역할) -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  
+  <!-- Decap CMS 스크립트 로드 -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <script>
+    // Netlify Identity 로그인 후 리다이렉트 처리 등 세션 연동 보조 스크립트
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.reload();
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
