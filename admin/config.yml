@@ -2,6 +2,7 @@ backend:
   name: github
   repo: kuongzn/bomgallery2
   branch: main
+  site_id: "lighthearted-melomakarona-8a2b93"  # 💡 Netlify 대시보드에서 본인 프로젝트의 고유 이름 입력
   auth_type: token
 #  auth_type: implicit  # 💡 팝업창을 통해 직접 깃허브 인증을 받는 방식
 #  client_id: "Ov23liSBWHmDQmfnY408"
