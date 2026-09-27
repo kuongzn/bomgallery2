@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   repo: kuongzn/bomgallery2
   branch: main
-  base_url: https://api.netlify.com
+  identity_url: https://bomgallery2.netlify.app/.netlify/identity
   auth_endpoint: auth
 
 media_folder: "img"
