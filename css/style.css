@@ -155,11 +155,15 @@ body {
    ========================================== */
 .hero-slider {
     position: relative;
-    height: calc(100vh - 70px);
-    min-height: 550px;
+    width: 100%;
+    max-width: 1400px;
+    height: 480px;            /* 650px에서 480px로 더 낮춰서 한눈에 쏙 들어오게 조정 */
+    margin: 1.5rem auto 0;
+    border-radius: 12px;
     padding: 0 !important;
     overflow: hidden;
     background: var(--bg-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
 }
 
 .slider-container {
