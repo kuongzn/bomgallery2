@@ -21,24 +21,8 @@
 <body>
   <!-- Decap CMS 루트 영역 -->
   <div id="nc-root"></div>
-
-  <!-- Netlify Identity 위젯 스크립트 (Netlify 로그인을 원활하게 돕는 역할) -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   
-  <!-- Decap CMS 스크립트 로드 -->
+  <!-- Decap CMS 스크립트 로드 (로컬 테스트 전용) -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-
-  <script>
-    // Netlify Identity 로그인 후 리다이렉트 처리 등 세션 연동 보조 스크립트
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.reload();
-          });
-        }
-      });
-    }
-  </script>
 </body>
 </html>

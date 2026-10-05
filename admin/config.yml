@@ -1,21 +1,23 @@
 backend:
-  name: git-gateway
+  name: github
   repo: kuongzn/bomgallery2
-  branch: main
-  identity_url: https://bomgallery2.netlify.app/.netlify/identity
+  base_url: https://decap-one.vercel.app
 
-media_folder: "img"
+local_backend: true
+
+# 기본 전역 설정
+media_folder: "public/img"
 public_folder: "/img"
 
 collections:
-  - name: "hero_slider"
-    label: "메인 히어로 슬라이더"
+  - name: "pages"
+    label: "페이지 콘텐츠 관리"
     files:
       - file: "content/hero-slides.json"
-        label: "히어로 슬라이더 편집"
+        label: "메인 히어로 슬라이더"
         name: "hero_slides"
         fields:
-          - label: "작품 목록 (슬라이드)"
+          - label: "작품 목록 (슬라이더)"
             name: "slides"
             widget: "list"
             fields:
@@ -24,15 +26,14 @@ collections:
               - label: "작품 이미지"
                 name: "img"
                 widget: "image"
-                media_folder: "img/artworks"
+                # 맨 앞에 '/'를 붙여 프로젝트 루트 기준 경로로 지정
+                media_folder: "/public/img/artworks"
+                # JSON 파일에 기록되고 웹페이지에서 접근할 경로
                 public_folder: "/img/artworks"
 
-  - name: "exhibitions"
-    label: "전시회 관리"
-    files:
       - file: "content/exhibitions.json"
-        label: "전시회 목록 편집"
-        name: "exhibitions_list"
+        label: "전시회 목록"
+        name: "exhibitions"
         fields:
           - label: "전시회 목록"
             name: "items"
@@ -44,5 +45,5 @@ collections:
               - label: "전시 포스터 이미지"
                 name: "image"
                 widget: "image"
-                media_folder: "img/exhibitions"
+                media_folder: "/public/img/exhibitions"
                 public_folder: "/img/exhibitions"
